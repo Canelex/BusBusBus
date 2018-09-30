@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Bus
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -52,4 +54,7 @@ TagManager:
     locked: 0
   - name: Bus
     uniqueID: 1072794267
+    locked: 0
+  - name: Effects
+    uniqueID: 3633143389
     locked: 0

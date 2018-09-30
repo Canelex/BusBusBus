@@ -5,7 +5,6 @@ using UnityEngine;
 public class BusController : MonoBehaviour
 {
     public LineRenderer line;
-    public bool transitioning;
 
     public void UpdatePosition(float percent)
     {
@@ -41,7 +40,17 @@ public class BusController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        
+        if (coll.gameObject.tag == "Obstacle")
+        {
+            // Calculate point of explosion (average of all contact points).
+            Vector2 avg = Vector2.zero;
+            foreach (ContactPoint2D cp in coll.contacts)
+            {
+                avg += cp.point;
+            }
+            avg /= coll.contacts.Length;
+            FindObjectOfType<LevelController>().BusCrashedAt(avg);
+        }
     }
 
     float GetLineLength()

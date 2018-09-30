@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelController : MonoBehaviour
 {
@@ -17,6 +18,11 @@ public class LevelController : MonoBehaviour
     private float cameraProgress;
     private Vector3 cameraFinish;
     private Vector3 cameraStart;
+    public Animator explosion;
+    public GameObject gameOverCanvas;
+    public GameObject nextLevelButton;
+    public GameObject replayButton;
+    public GameObject levelSelectButton;
     
     void Start()
     {
@@ -63,6 +69,9 @@ public class LevelController : MonoBehaviour
                     else // Level cleared
                     {
                         gameOver = true;
+                        nextLevelButton.SetActive(true);
+                        levelSelectButton.SetActive(true);
+                        Invoke("ShowGameOverCanvas", 0.75F);
                     }
                 }
 
@@ -70,5 +79,24 @@ public class LevelController : MonoBehaviour
                 bus.UpdatePosition(sectorProgress);
             }
         }
+    }
+
+    public void BusCrashedAt(Vector2 position)
+    {
+        // Play explosion effect
+        Animator expl = Instantiate(explosion);
+        expl.transform.position = position;
+        Destroy(expl.gameObject, expl.GetCurrentAnimatorStateInfo(0).length);
+
+        // Game Overr. Enable the correct buttons and show canvas in a second
+        gameOver = true;
+        replayButton.SetActive(true);
+        levelSelectButton.SetActive(true);
+        Invoke("ShowGameOverCanvas", 0.75F);
+    }
+
+    private void ShowGameOverCanvas()
+    {
+        gameOverCanvas.SetActive(true);
     }
 }
