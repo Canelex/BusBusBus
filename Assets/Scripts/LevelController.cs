@@ -1,0 +1,74 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class LevelController : MonoBehaviour
+{
+    private Camera cam;
+    private LineController line;
+    private BusController bus;
+    private bool gameOver;
+    public float sectorTime;
+    private float sectorProgress;
+    public int numSectors;
+    private int currentSector;
+    private bool cameraMoving;
+    public float cameraTime;
+    private float cameraProgress;
+    private Vector3 cameraFinish;
+    private Vector3 cameraStart;
+    
+    void Start()
+    {
+        cam = Camera.main;
+        line = FindObjectOfType<LineController>();
+        bus = FindObjectOfType<BusController>();
+        currentSector = 1;
+    }
+
+    void Update()
+    {
+        if (!gameOver)
+        {
+            if (cameraMoving) // Camera is moving to next sector
+            {
+                cameraProgress += Time.deltaTime / cameraTime; // [0-1]
+
+                if (cameraProgress > 1)
+                {
+                    cameraProgress = 1;
+                    cameraMoving = false;
+                    sectorProgress = 0;
+                }
+
+                cam.transform.position = Vector3.Lerp(cameraStart, cameraFinish, cameraProgress);
+                line.UpdateLine(); // Update line after camera
+            }
+            else
+            {
+                sectorProgress += Time.deltaTime / sectorTime;
+
+                if (sectorProgress > 1)
+                {
+                    sectorProgress = 1;
+
+                    if (currentSector < numSectors) // More sectors to go
+                    {
+                        currentSector++;
+                        cameraMoving = true;
+                        cameraProgress = 0;
+                        cameraStart = cam.transform.position;
+                        cameraFinish = cameraStart + Vector3.up * cam.orthographicSize * 2;
+                    }
+                    else // Level cleared
+                    {
+                        gameOver = true;
+                    }
+                }
+
+                line.UpdateLine(); // Update line before bus
+                bus.UpdatePosition(sectorProgress);
+            }
+        }
+    }
+}

@@ -27,12 +27,19 @@ public class LineController : MonoBehaviour
         curveX = new AnimationCurve();
         curveY = new AnimationCurve();
         numKnots = maximumFingers + 2; // Number of fingers + 2 end points
-        keysX = new Keyframe[numKnots]; 
+        keysX = new Keyframe[numKnots];
         keysY = new Keyframe[numKnots];
         knots = new Vector2[numKnots];
         smoothKnots = new Vector3[numSmoothKnots];
         line = GetComponent<LineRenderer>();
         line.positionCount = numSmoothKnots;
+
+        // Fix this lame bug where line looks funky until first update
+        line.SetPosition(0, startPoint);
+        for (int i = 1; i < numSmoothKnots; i++)
+        {
+            line.SetPosition(i, endPoint);
+        }
     }
 
     public void UpdateLine()
