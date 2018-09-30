@@ -69,6 +69,7 @@ public class LevelController : MonoBehaviour
                     else // Level cleared
                     {
                         gameOver = true;
+                        AudioManager.Instance.PlayMusic(null, 0);
                         nextLevelButton.SetActive(true);
                         levelSelectButton.SetActive(true);
                         Invoke("ShowGameOverCanvas", 0.75F);
