@@ -41,3 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 3148136907
+    locked: 0
+  - name: Line
+    uniqueID: 711096821
+    locked: 0
+  - name: Barriers
+    uniqueID: 3372930665
+    locked: 0
+  - name: Bus
+    uniqueID: 1072794267
+    locked: 0
