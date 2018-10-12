@@ -71,3 +71,5 @@ MonoBehaviour:
   nextLevelButton: {fileID: 0}
   replayButton: {fileID: 0}
   levelSelectButton: {fileID: 0}
+  bellSound: {fileID: 8300000, guid: e5089a3003ec00f4992f4e738f076568, type: 3}
+  popSound: {fileID: 8300000, guid: 5dbc180586be8154f8073ab03fd41a16, type: 3}
