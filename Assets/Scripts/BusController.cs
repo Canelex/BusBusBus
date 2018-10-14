@@ -5,12 +5,10 @@ using UnityEngine;
 public class BusController : MonoBehaviour
 {
     public LineRenderer line;
-    public AudioClip busSound;
-    public AudioClip explosionSound;
 
     void Start()
     {
-        AudioManager.Instance.PlayMusic(busSound, 0.5F);
+        AudioManager.Instance.Play("Bus"); // Background sound (looping)
     }
 
     public void UpdatePosition(float percent)
@@ -48,8 +46,7 @@ public class BusController : MonoBehaviour
     {
         if (coll.gameObject.tag == "Obstacle")
         {
-            AudioManager.Instance.Play(explosionSound, 1F); // Boom!
-            AudioManager.Instance.PlayMusic(null, 0); // Turn off bus sound
+            AudioManager.Instance.Play("Crash"); // Crash sound (oneshot)
 
             // Calculate point of explosion (average of all contact points).
             Vector2 avg = Vector2.zero;

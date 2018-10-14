@@ -24,8 +24,6 @@ public class LevelController : MonoBehaviour
     public GameObject nextLevelButton;
     public GameObject replayButton;
     public GameObject levelSelectButton;
-    public AudioClip bellSound;
-    public AudioClip popSound;
     
     void Start()
     {
@@ -71,13 +69,13 @@ public class LevelController : MonoBehaviour
                     }
                     else // Level cleared
                     {
+                        AudioManager.Instance.Play("Bell"); // Ding sound (oneshot)
+
                         // Unlock next level
                         int nextIndex = SceneManager.GetActiveScene().buildIndex + 1;
                         PlayerPrefs.SetInt("LevelCompleted" + nextIndex, 1);
 
                         gameOver = true;
-                        AudioManager.Instance.PlayMusic(null, 0);
-                        AudioManager.Instance.Play(bellSound, 1F);
                         nextLevelButton.SetActive(true);
                         levelSelectButton.SetActive(true);
                         Invoke("ShowGameOverCanvas", 0.75F);
@@ -106,7 +104,7 @@ public class LevelController : MonoBehaviour
 
     private void ShowGameOverCanvas()
     {
-        AudioManager.Instance.Play(popSound, 0.75F);
+        AudioManager.Instance.Play("Pop"); // Pop sound (oneshot)
         gameOverCanvas.SetActive(true);
     }
 }
