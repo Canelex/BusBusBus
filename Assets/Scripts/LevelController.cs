@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
 {
@@ -70,6 +71,10 @@ public class LevelController : MonoBehaviour
                     }
                     else // Level cleared
                     {
+                        // Unlock next level
+                        int nextIndex = SceneManager.GetActiveScene().buildIndex + 1;
+                        PlayerPrefs.SetInt("LevelCompleted" + nextIndex, 1);
+
                         gameOver = true;
                         AudioManager.Instance.PlayMusic(null, 0);
                         AudioManager.Instance.Play(bellSound, 1F);

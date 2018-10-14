@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 361b82abfb0fee4488cb3ec8e8e0c205
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - lockIcon: {instanceID: 0}
+  - spriteLocked: {fileID: 21300000, guid: f04cac2b7b82f1d459d4d0d8591654e8, type: 3}
+  - spriteUnlocked: {fileID: 21300002, guid: f04cac2b7b82f1d459d4d0d8591654e8, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
