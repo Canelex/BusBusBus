@@ -27,6 +27,7 @@ public class LevelController : MonoBehaviour
     
     void Start()
     {
+        Application.targetFrameRate = 60; // Set the framerate to 60.
         cam = Camera.main;
         line = FindObjectOfType<LineController>();
         bus = FindObjectOfType<BusController>();
