@@ -9,7 +9,7 @@ public class LevelController : MonoBehaviour
     private Camera cam;
     private LineController line;
     private BusController bus;
-    private bool gameOver;
+    public bool gameOver;
     public float sectorTime;
     private float sectorProgress;
     public int numSectors;
@@ -70,16 +70,20 @@ public class LevelController : MonoBehaviour
                     }
                     else // Level cleared
                     {
-                        AudioManager.Instance.Play("Bell"); // Ding sound (oneshot)
+                        gameOver = true;
 
                         // Unlock next level
                         int nextIndex = SceneManager.GetActiveScene().buildIndex + 1;
                         PlayerPrefs.SetInt("LevelCompleted" + nextIndex, 1);
 
-                        gameOver = true;
+                        // Play victory sound
+                        AudioManager.Instance.Play("Bell"); 
+
+                        // Show UI overlay in a moment
                         nextLevelButton.SetActive(true);
                         levelSelectButton.SetActive(true);
                         Invoke("ShowGameOverCanvas", 0.75F);
+                        
                     }
                 }
 
