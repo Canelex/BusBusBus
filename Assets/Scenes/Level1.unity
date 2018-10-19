@@ -113,6 +113,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &11292099 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1906658941214974, guid: e8c64a50c6703f44a9e7111a8c9213b9,
+    type: 2}
+  m_PrefabInternal: {fileID: 324442537}
 --- !u!114 &185037173 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114337433372715008, guid: 0e83840ac5b8ccc4499f124de5f4b596,
@@ -283,11 +288,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114755857488042438, guid: e8c64a50c6703f44a9e7111a8c9213b9,
+    - target: {fileID: 223291531539821996, guid: e8c64a50c6703f44a9e7111a8c9213b9,
         type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 185037173}
+      objectReference: {fileID: 1202980760}
     - target: {fileID: 114088479785232688, guid: e8c64a50c6703f44a9e7111a8c9213b9,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -298,11 +303,11 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 185037173}
-    - target: {fileID: 223291531539821996, guid: e8c64a50c6703f44a9e7111a8c9213b9,
+    - target: {fileID: 114755857488042438, guid: e8c64a50c6703f44a9e7111a8c9213b9,
         type: 2}
-      propertyPath: m_Camera
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1202980760}
+      objectReference: {fileID: 185037173}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8c64a50c6703f44a9e7111a8c9213b9, type: 2}
   m_IsPrefabAsset: 0
@@ -391,6 +396,11 @@ Prefab:
     - target: {fileID: 4298148203943928, guid: 2ac792f6b0d32aa468018d712f0611ca, type: 2}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 120000960998082302, guid: 2ac792f6b0d32aa468018d712f0611ca,
+        type: 2}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ac792f6b0d32aa468018d712f0611ca, type: 2}
@@ -801,6 +811,11 @@ Prefab:
       propertyPath: levelSelectButton
       value: 
       objectReference: {fileID: 871299034}
+    - target: {fileID: 114353845185674838, guid: 0e83840ac5b8ccc4499f124de5f4b596,
+        type: 2}
+      propertyPath: tipPanel
+      value: 
+      objectReference: {fileID: 11292099}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e83840ac5b8ccc4499f124de5f4b596, type: 2}
   m_IsPrefabAsset: 0

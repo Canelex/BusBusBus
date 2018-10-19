@@ -24,6 +24,7 @@ public class LevelController : MonoBehaviour
     public GameObject nextLevelButton;
     public GameObject replayButton;
     public GameObject levelSelectButton;
+    public GameObject tipPanel;
     
     void Start()
     {
@@ -104,6 +105,7 @@ public class LevelController : MonoBehaviour
         gameOver = true;
         replayButton.SetActive(true);
         levelSelectButton.SetActive(true);
+        tipPanel.SetActive(true);
         Invoke("ShowGameOverCanvas", 0.75F);
     }
 

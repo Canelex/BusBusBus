@@ -662,6 +662,11 @@ Prefab:
       propertyPath: levelSelectButton
       value: 
       objectReference: {fileID: 1094054772}
+    - target: {fileID: 114353845185674838, guid: 0e83840ac5b8ccc4499f124de5f4b596,
+        type: 2}
+      propertyPath: tipPanel
+      value: 
+      objectReference: {fileID: 1094054776}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e83840ac5b8ccc4499f124de5f4b596, type: 2}
   m_IsPrefabAsset: 0
@@ -762,36 +767,21 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114755857488042438, guid: e8c64a50c6703f44a9e7111a8c9213b9,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 927619378}
-    - target: {fileID: 114755857488042438, guid: e8c64a50c6703f44a9e7111a8c9213b9,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadSceneIn
-      objectReference: {fileID: 0}
-    - target: {fileID: 114307621324464756, guid: e8c64a50c6703f44a9e7111a8c9213b9,
+    - target: {fileID: 114088479785232688, guid: e8c64a50c6703f44a9e7111a8c9213b9,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 927619378}
     - target: {fileID: 114307621324464756, guid: e8c64a50c6703f44a9e7111a8c9213b9,
         type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadSceneIn
-      objectReference: {fileID: 0}
-    - target: {fileID: 114088479785232688, guid: e8c64a50c6703f44a9e7111a8c9213b9,
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 927619378}
+    - target: {fileID: 114755857488042438, guid: e8c64a50c6703f44a9e7111a8c9213b9,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 927619378}
-    - target: {fileID: 114088479785232688, guid: e8c64a50c6703f44a9e7111a8c9213b9,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8c64a50c6703f44a9e7111a8c9213b9, type: 2}
   m_IsPrefabAsset: 0
@@ -813,6 +803,11 @@ GameObject:
 --- !u!1 &1094054775 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1167650964278040, guid: e8c64a50c6703f44a9e7111a8c9213b9,
+    type: 2}
+  m_PrefabInternal: {fileID: 1094054771}
+--- !u!1 &1094054776 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1906658941214974, guid: e8c64a50c6703f44a9e7111a8c9213b9,
     type: 2}
   m_PrefabInternal: {fileID: 1094054771}
 --- !u!1001 &1098167707
