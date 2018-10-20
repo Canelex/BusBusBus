@@ -105,7 +105,7 @@ public class LevelController : MonoBehaviour
         gameOver = true;
         replayButton.SetActive(true);
         levelSelectButton.SetActive(true);
-        tipPanel.SetActive(true);
+        if (tipPanel != null) tipPanel.SetActive(true); // Can be null
         Invoke("ShowGameOverCanvas", 0.75F);
     }
 

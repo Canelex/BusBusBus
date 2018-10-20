@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class MovingBarrier : MonoBehaviour
 {
-    private Vector2 original;
-    public Vector2 point1;
-    public Vector2 point2;
+    public float left;
+    public float right;
     public float period;
+    private Vector3 point1;
+    private Vector3 point2;
     private float percent;
     private bool whichWay;
     private LevelController levelController;
 
     void Start()
     {
-        original = transform.position;
         levelController = FindObjectOfType<LevelController>();
+        point1 = transform.position + transform.right * left;
+        point2 = transform.position + transform.right * right; 
     }
 
     void Update()
@@ -26,11 +28,11 @@ public class MovingBarrier : MonoBehaviour
 
             if (whichWay)
             {
-                transform.position = original + Vector2.Lerp(point1, point2, Mathf.Min(percent, 1));
+                transform.position = Vector2.Lerp(point1, point2, Mathf.Min(percent, 1));
             }
             else
             {
-                transform.position = original + Vector2.Lerp(point2, point1, Mathf.Min(percent, 1));
+                transform.position = Vector2.Lerp(point2, point1, Mathf.Min(percent, 1));
             }
 
             if (percent > 1)

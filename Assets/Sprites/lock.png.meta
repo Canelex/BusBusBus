@@ -4,6 +4,7 @@ TextureImporter:
   fileIDToRecycleName:
     21300000: lock_0
     21300002: lock_1
+    21300004: lock_2
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -116,13 +117,13 @@ TextureImporter:
         width: 12
         height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b9c7a01be6996554d906ef682dfcb2c0
+      spriteID: 4f249073ea65cc441bf9b769c851b507
       vertices: []
       indices: 
       edges: []
@@ -136,13 +137,13 @@ TextureImporter:
         width: 12
         height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab624f576f8d0a044bc12c16cbbc2267
+      spriteID: d655869cd5b1cc840aa32f89d1eafe77
       vertices: []
       indices: 
       edges: []
