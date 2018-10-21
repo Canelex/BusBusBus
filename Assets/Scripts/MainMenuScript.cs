@@ -6,9 +6,9 @@ public class MainMenuScript : MonoBehaviour
 {
     public int targetFrameRate;
     public Text textSounds;
-    public Text textHints;
+    public Text textTips;
     private bool soundsEnabled;
-    private bool hintsEnabled;
+    private bool tipsEnabled;
 
     void Start()
     {
@@ -23,11 +23,11 @@ public class MainMenuScript : MonoBehaviour
         textSounds.text = "Sound: " + (soundsEnabled ? "On" : "Off");
 
         // Load hints setting and update button.
-        hintsEnabled = BetterPrefs.GetBool(BetterPrefs.KEY_HINTS_ENABLED, true);
-        textHints.text = "Hints: " + (hintsEnabled ? "On" : "Off");
+        tipsEnabled = BetterPrefs.GetBool(BetterPrefs.KEY_TIPS_ENABLED, true);
+        textTips.text = "Tips: " + (tipsEnabled ? "On" : "Off");
     }
 
-    public void ToggleSFX()
+    public void ToggleSounds()
     {
         // Update SFX setting and update button.
         soundsEnabled = !soundsEnabled;
@@ -35,12 +35,12 @@ public class MainMenuScript : MonoBehaviour
         BetterPrefs.SetBool(BetterPrefs.KEY_SOUNDS_ENABLED, soundsEnabled);
     }
 
-    public void ToggleHints()
+    public void ToggleTips()
     {
         // Update hints button and update button.
-        hintsEnabled = !hintsEnabled;
-        textHints.text = "Hints: " + (hintsEnabled ? "On" : "Off");
-        BetterPrefs.SetBool(BetterPrefs.KEY_HINTS_ENABLED, hintsEnabled);
+        tipsEnabled = !tipsEnabled;
+        textTips.text = "Tips: " + (tipsEnabled ? "On" : "Off");
+        BetterPrefs.SetBool(BetterPrefs.KEY_TIPS_ENABLED, tipsEnabled);
     }
 
     public void Play()

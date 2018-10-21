@@ -25,7 +25,7 @@ public class LevelController : MonoBehaviour
     public GameObject replayButton;
     public GameObject levelSelectButton;
     public GameObject tipPanel;
-    private bool hintsEnabled;
+    private bool tipsEnabled;
     
     void Start()
     {
@@ -33,7 +33,7 @@ public class LevelController : MonoBehaviour
         line = FindObjectOfType<LineController>();
         bus = FindObjectOfType<BusController>();
         currentSector = 1;
-        hintsEnabled = BetterPrefs.GetBool(BetterPrefs.KEY_HINTS_ENABLED, true); // Prefs
+        tipsEnabled = BetterPrefs.GetBool(BetterPrefs.KEY_TIPS_ENABLED, true); // Prefs
     }
 
     void Update()
@@ -108,7 +108,7 @@ public class LevelController : MonoBehaviour
         levelSelectButton.SetActive(true);
 
         // Maybe show the hints panel
-        if (tipPanel && hintsEnabled)
+        if (tipPanel && tipsEnabled)
         {
             tipPanel.SetActive(true);
         }
