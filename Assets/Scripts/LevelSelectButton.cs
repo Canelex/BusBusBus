@@ -1,43 +1,33 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class LevelSelectButton : MonoBehaviour
 {
     public int levelIndex;
-    public Image lockIcon;
-    public Sprite spriteLocked;
-    public Sprite spriteUnlocked;
-    private bool levelLocked;
+    public GameObject lockIcon;
+    public bool unlockedByDefault;
+    private bool levelUnlocked;
 
 	void Start ()
     {
-        levelLocked = PlayerPrefs.GetInt("LevelCompleted" + levelIndex) == 0;
+        // Check if the level should be unlocked.
+        levelUnlocked = unlockedByDefault || BetterPrefs.GetBool(BetterPrefs.PREFIX_LEVEL_UNLOCKED + levelIndex, false);
 
-        if (levelIndex == 1)
+        if (levelUnlocked)
         {
-            levelLocked = false;
-        }
-
-        if (levelLocked)
-        {
-            lockIcon.sprite = spriteLocked;
-        }
-        else
-        {
-            lockIcon.sprite = spriteUnlocked;
+            lockIcon.gameObject.SetActive(false); // Hide lock icon on unlocked levels.
         }
 	}
 
     public void TryToLoadLevel()
     {
-        if (!levelLocked)
+        if (levelUnlocked)
         {
             SceneManager.LoadScene(levelIndex);
         }
         else
         {
-            // Play some kind of rejection sound?
+            // TODO: Play some kind of rejection sound?
         }
     }
 }

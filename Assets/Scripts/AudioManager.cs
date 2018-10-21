@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance;
     private AudioSource source;
     public Sound[] sounds;
+    private bool sfxEnabled;
 	
     private void Awake()
     {
@@ -22,6 +23,8 @@ public class AudioManager : MonoBehaviour
         }
 
         source = GetComponent<AudioSource>();
+
+        sfxEnabled = BetterPrefs.GetBool(BetterPrefs.KEY_SFX_ENABLED, true);
     }
 
 	public void Play(string name)
@@ -30,6 +33,8 @@ public class AudioManager : MonoBehaviour
         {
             Stop(); // Stop the current clip if it's running
         }
+
+        if (!sfxEnabled) return; // Sounds disabled
 
         foreach (Sound sound in sounds)
         {

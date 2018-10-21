@@ -25,14 +25,15 @@ public class LevelController : MonoBehaviour
     public GameObject replayButton;
     public GameObject levelSelectButton;
     public GameObject tipPanel;
+    private bool hintsEnabled;
     
     void Start()
     {
-        Application.targetFrameRate = 60; // Set the framerate to 60.
         cam = Camera.main;
         line = FindObjectOfType<LineController>();
         bus = FindObjectOfType<BusController>();
         currentSector = 1;
+        hintsEnabled = BetterPrefs.GetBool(BetterPrefs.KEY_HINTS_ENABLED, true); // Prefs
     }
 
     void Update()
@@ -75,7 +76,7 @@ public class LevelController : MonoBehaviour
 
                         // Unlock next level
                         int nextIndex = SceneManager.GetActiveScene().buildIndex + 1;
-                        PlayerPrefs.SetInt("LevelCompleted" + nextIndex, 1);
+                        BetterPrefs.SetBool(BetterPrefs.PREFIX_LEVEL_UNLOCKED + nextIndex, true);
 
                         // Play victory sound
                         AudioManager.Instance.Play("Bell"); 
@@ -105,7 +106,13 @@ public class LevelController : MonoBehaviour
         gameOver = true;
         replayButton.SetActive(true);
         levelSelectButton.SetActive(true);
-        if (tipPanel != null) tipPanel.SetActive(true); // Can be null
+
+        // Maybe show the hints panel
+        if (tipPanel && hintsEnabled)
+        {
+            tipPanel.SetActive(true);
+        }
+
         Invoke("ShowGameOverCanvas", 0.75F);
     }
 

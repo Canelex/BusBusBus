@@ -127,10 +127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 361b82abfb0fee4488cb3ec8e8e0c205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelIndex: 1
-  lockIcon: {fileID: 114523939597966008}
-  spriteLocked: {fileID: 21300000, guid: f04cac2b7b82f1d459d4d0d8591654e8, type: 3}
-  spriteUnlocked: {fileID: 21300002, guid: f04cac2b7b82f1d459d4d0d8591654e8, type: 3}
+  levelIndex: 2
+  lockIcon: {fileID: 1660365592847396}
+  unlockedByDefault: 0
 --- !u!114 &114523939597966008
 MonoBehaviour:
   m_ObjectHideFlags: 1
