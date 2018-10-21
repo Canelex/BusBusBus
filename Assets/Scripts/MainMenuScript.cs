@@ -20,7 +20,7 @@ public class MainMenuScript : MonoBehaviour
 
         // Load SFX setting and update button.
         sfxEnabled = BetterPrefs.GetBool(BetterPrefs.KEY_SFX_ENABLED, true);
-        textSFX.text = "SFX: " + (sfxEnabled ? "On" : "Off");
+        textSFX.text = "Sound: " + (sfxEnabled ? "On" : "Off");
 
         // Load hints setting and update button.
         hintsEnabled = BetterPrefs.GetBool(BetterPrefs.KEY_HINTS_ENABLED, true);
@@ -31,7 +31,7 @@ public class MainMenuScript : MonoBehaviour
     {
         // Update SFX setting and update button.
         sfxEnabled = !sfxEnabled;
-        textSFX.text = "SFX: " + (sfxEnabled ? "On" : "Off");
+        textSFX.text = "Sound: " + (sfxEnabled ? "On" : "Off");
         BetterPrefs.SetBool(BetterPrefs.KEY_SFX_ENABLED, sfxEnabled);
     }
 
