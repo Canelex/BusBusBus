@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class BusController : MonoBehaviour
 {
-    public LineRenderer line;
+    private LineRenderer line;
 
     void Start()
     {
+        // Find the line renderer attatched to controller.
+        LineController lc = FindObjectOfType<LineController>();
+        line = lc.GetComponent<LineRenderer>();
+
         AudioManager.Instance.Play("Bus"); // Background sound (looping)
     }
 

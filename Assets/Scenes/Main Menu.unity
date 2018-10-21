@@ -282,7 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetFrameRate: 60
-  textSFX: {fileID: 1083424589}
+  textSounds: {fileID: 1083424589}
   textHints: {fileID: 1183733759}
 --- !u!1 &213306238
 GameObject:
@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 225429534}
   - component: {fileID: 225429533}
   m_Layer: 5
-  m_Name: SFX Button
+  m_Name: Sounds Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -804,7 +804,7 @@ GameObject:
   - component: {fileID: 1083424590}
   - component: {fileID: 1083424589}
   m_Layer: 5
-  m_Name: SFXText
+  m_Name: SoundsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

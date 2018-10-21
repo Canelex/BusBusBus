@@ -2,7 +2,7 @@ using UnityEngine;
 
 public static class BetterPrefs
 {
-    public static string KEY_SFX_ENABLED = "sfx-enabled";
+    public static string KEY_SOUNDS_ENABLED = "sounds-enabled";
     public static string KEY_HINTS_ENABLED = "hints-enabled";
     public static string PREFIX_LEVEL_UNLOCKED = "level-unlocked-";
 

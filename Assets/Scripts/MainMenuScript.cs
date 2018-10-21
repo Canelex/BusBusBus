@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 public class MainMenuScript : MonoBehaviour
 {
     public int targetFrameRate;
-    public Text textSFX;
+    public Text textSounds;
     public Text textHints;
-    private bool sfxEnabled;
+    private bool soundsEnabled;
     private bool hintsEnabled;
 
     void Start()
@@ -19,8 +19,8 @@ public class MainMenuScript : MonoBehaviour
         }
 
         // Load SFX setting and update button.
-        sfxEnabled = BetterPrefs.GetBool(BetterPrefs.KEY_SFX_ENABLED, true);
-        textSFX.text = "Sound: " + (sfxEnabled ? "On" : "Off");
+        soundsEnabled = BetterPrefs.GetBool(BetterPrefs.KEY_SOUNDS_ENABLED, true);
+        textSounds.text = "Sound: " + (soundsEnabled ? "On" : "Off");
 
         // Load hints setting and update button.
         hintsEnabled = BetterPrefs.GetBool(BetterPrefs.KEY_HINTS_ENABLED, true);
@@ -30,9 +30,9 @@ public class MainMenuScript : MonoBehaviour
     public void ToggleSFX()
     {
         // Update SFX setting and update button.
-        sfxEnabled = !sfxEnabled;
-        textSFX.text = "Sound: " + (sfxEnabled ? "On" : "Off");
-        BetterPrefs.SetBool(BetterPrefs.KEY_SFX_ENABLED, sfxEnabled);
+        soundsEnabled = !soundsEnabled;
+        textSounds.text = "Sound: " + (soundsEnabled ? "On" : "Off");
+        BetterPrefs.SetBool(BetterPrefs.KEY_SOUNDS_ENABLED, soundsEnabled);
     }
 
     public void ToggleHints()
