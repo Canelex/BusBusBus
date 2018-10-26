@@ -549,6 +549,11 @@ Prefab:
       propertyPath: tipPanel
       value: 
       objectReference: {fileID: 1988790615}
+    - target: {fileID: 114353845185674838, guid: 0e83840ac5b8ccc4499f124de5f4b596,
+        type: 2}
+      propertyPath: unlockLevelsButton
+      value: 
+      objectReference: {fileID: 2066420121}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e83840ac5b8ccc4499f124de5f4b596, type: 2}
   m_IsPrefabAsset: 0
@@ -898,6 +903,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8c64a50c6703f44a9e7111a8c9213b9, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &2066420121 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1250656382741822, guid: e8c64a50c6703f44a9e7111a8c9213b9,
+    type: 2}
+  m_PrefabInternal: {fileID: 2066420120}
 --- !u!1001 &2135640143
 Prefab:
   m_ObjectHideFlags: 0

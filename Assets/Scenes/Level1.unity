@@ -345,11 +345,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114834673658492972, guid: e8c64a50c6703f44a9e7111a8c9213b9,
-        type: 2}
-      propertyPath: m_Text
-      value: 'Tip: Adjust the path with your finger.'
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8c64a50c6703f44a9e7111a8c9213b9, type: 2}
   m_IsPrefabAsset: 0
@@ -376,6 +371,11 @@ GameObject:
 --- !u!1 &723398025 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1167650964278040, guid: e8c64a50c6703f44a9e7111a8c9213b9,
+    type: 2}
+  m_PrefabInternal: {fileID: 723398020}
+--- !u!1 &723398026 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1250656382741822, guid: e8c64a50c6703f44a9e7111a8c9213b9,
     type: 2}
   m_PrefabInternal: {fileID: 723398020}
 --- !u!1001 &727193384
@@ -652,6 +652,11 @@ Prefab:
       propertyPath: tipPanel
       value: 
       objectReference: {fileID: 723398021}
+    - target: {fileID: 114353845185674838, guid: 0e83840ac5b8ccc4499f124de5f4b596,
+        type: 2}
+      propertyPath: unlockLevelsButton
+      value: 
+      objectReference: {fileID: 723398026}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e83840ac5b8ccc4499f124de5f4b596, type: 2}
   m_IsPrefabAsset: 0

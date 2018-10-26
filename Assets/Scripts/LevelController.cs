@@ -22,6 +22,7 @@ public class LevelController : MonoBehaviour
     public Animator explosion;
     public GameObject gameOverCanvas;
     public GameObject nextLevelButton;
+    public GameObject unlockLevelsButton;
     public GameObject replayButton;
     public GameObject levelSelectButton;
     public GameObject tipPanel;
@@ -74,16 +75,26 @@ public class LevelController : MonoBehaviour
                     {
                         gameOver = true;
 
-                        // Unlock next level
-                        int nextIndex = SceneManager.GetActiveScene().buildIndex + 1;
-                        BetterPrefs.SetBool(BetterPrefs.PREFIX_LEVEL_UNLOCKED + nextIndex, true);
+                        // Level is completed!
+                        int levelIndex = SceneManager.GetActiveScene().buildIndex;
+                        BetterPrefs.SetBool(BetterPrefs.PREFIX_LEVEL_COMPLETED + levelIndex, true);
 
                         // Play victory sound
                         AudioManager.Instance.Play("Bell"); 
 
                         // Show UI overlay in a moment
-                        nextLevelButton.SetActive(true);
                         levelSelectButton.SetActive(true);
+
+                        // Is there a next level unlocked?
+                        if (levelIndex - 1 < BetterPrefs.GetInt(BetterPrefs.KEY_LEVELS_UNLOCKED, 5))
+                        {
+                            nextLevelButton.SetActive(true);
+                        }
+                        else
+                        {
+                            unlockLevelsButton.SetActive(true);
+                        }
+
                         Invoke("ShowGameOverCanvas", 0.75F);
                         
                     }

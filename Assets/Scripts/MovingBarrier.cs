@@ -4,42 +4,45 @@ using UnityEngine;
 
 public class MovingBarrier : MonoBehaviour
 {
-    public float left;
-    public float right;
+    public float radius;
     public float period;
-    private Vector3 point1;
-    private Vector3 point2;
+    public float delay;
+    public bool toRight;
+    private Vector3 a;
+    private Vector3 b;
     private float percent;
-    private bool whichWay;
     private LevelController levelController;
 
     void Start()
     {
         levelController = FindObjectOfType<LevelController>();
-        point1 = transform.position + transform.right * left;
-        point2 = transform.position + transform.right * right; 
+        a = transform.position - transform.right * radius;
+        b = transform.position + transform.right * radius;
+        transform.position = (toRight ? a : b); // Starting point.
     }
 
     void Update()
     {
-        if (!levelController.gameOver)
+        if (Time.timeSinceLevelLoad < delay || levelController.gameOver)
         {
-            percent += Time.deltaTime / period;
+            return;
+        }
 
-            if (whichWay)
-            {
-                transform.position = Vector2.Lerp(point1, point2, Mathf.Min(percent, 1));
-            }
-            else
-            {
-                transform.position = Vector2.Lerp(point2, point1, Mathf.Min(percent, 1));
-            }
+        percent += Time.deltaTime / period;
 
-            if (percent > 1)
-            {
-                percent = 0;
-                whichWay = !whichWay; // Swap the direction.
-            }
+        if (toRight)
+        {
+            transform.position = Vector2.Lerp(a, b, Mathf.Min(percent, 1));
+        }
+        else
+        {
+            transform.position = Vector2.Lerp(b, a, Mathf.Min(percent, 1));
+        }
+
+        if (percent >= 1)
+        {
+            percent = 0;
+            toRight = !toRight; // Swap the direction.
         }
     }
 }

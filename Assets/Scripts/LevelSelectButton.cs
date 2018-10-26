@@ -1,25 +1,43 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class LevelSelectButton : MonoBehaviour
 {
-    public int levelIndex;
-    public GameObject lockIcon;
-    public bool unlockedByDefault;
+    private int levelIndex;
     private bool levelUnlocked;
+    private bool levelCompleted;
+    public Image levelIcon;
+    public Text levelText;
+    public Sprite lockIcon;
+    public Sprite checkIcon;
 
-	void Start ()
+    public void init(int index, bool unlocked, bool completed)
     {
-        // Check if the level should be unlocked.
-        levelUnlocked = unlockedByDefault || BetterPrefs.GetBool(BetterPrefs.PREFIX_LEVEL_UNLOCKED + levelIndex, false);
+        // Setup the button with information
+        levelIndex = index;
+        levelUnlocked = unlocked;
+        levelCompleted = completed;
 
-        if (levelUnlocked)
+        // Update name and text component
+        levelText.text = gameObject.name = "Level " + (levelIndex - 1);
+
+        // Update level select button icon
+        if (!levelUnlocked)
         {
-            lockIcon.gameObject.SetActive(false); // Hide lock icon on unlocked levels.
+            levelIcon.sprite = lockIcon; // Level locked, show lock icon
         }
-	}
+        else if (levelCompleted)
+        {
+            levelIcon.sprite = checkIcon; // Level completed, show checkmark icon
+        }
+        else
+        {
+            levelIcon.gameObject.SetActive(false); // Level incomplete, show nothing
+        }
+    }
 
-    public void TryToLoadLevel()
+    public void LoadLevel()
     {
         if (levelUnlocked)
         {
@@ -27,7 +45,9 @@ public class LevelSelectButton : MonoBehaviour
         }
         else
         {
-            // TODO: Play some kind of rejection sound?
+            // Play some kind of sound?
         }
     }
+
+
 }

@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 222531866992826466}
   - component: {fileID: 114523939597966008}
   m_Layer: 5
-  m_Name: Lock
+  m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,7 +104,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114252814223837608}
-        m_MethodName: TryToLoadLevel
+        m_MethodName: LoadLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -127,9 +127,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 361b82abfb0fee4488cb3ec8e8e0c205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelIndex: 2
-  lockIcon: {fileID: 1660365592847396}
-  unlockedByDefault: 0
+  levelIcon: {fileID: 114523939597966008}
+  levelText: {fileID: 114677369081613996}
+  lockIcon: {fileID: 21300000, guid: f04cac2b7b82f1d459d4d0d8591654e8, type: 3}
+  checkIcon: {fileID: 21300002, guid: f04cac2b7b82f1d459d4d0d8591654e8, type: 3}
 --- !u!114 &114523939597966008
 MonoBehaviour:
   m_ObjectHideFlags: 1
