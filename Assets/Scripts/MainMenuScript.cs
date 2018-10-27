@@ -19,11 +19,11 @@ public class MainMenuScript : MonoBehaviour
         }
 
         // Load SFX setting and update button.
-        soundsEnabled = BetterPrefs.GetBool(BetterPrefs.KEY_SOUNDS_ENABLED, true);
+        soundsEnabled = BetterPrefs.GetBool(Globals.KEY_SOUNDS_ENABLED, Globals.DEFAULT_SOUND_ENABLED);
         textSounds.text = "Sound: " + (soundsEnabled ? "On" : "Off");
 
         // Load hints setting and update button.
-        tipsEnabled = BetterPrefs.GetBool(BetterPrefs.KEY_TIPS_ENABLED, true);
+        tipsEnabled = BetterPrefs.GetBool(Globals.KEY_TIPS_ENABLED, Globals.DEFAULT_TIPS_ENABLED);
         textTips.text = "Tips: " + (tipsEnabled ? "On" : "Off");
     }
 
@@ -32,7 +32,7 @@ public class MainMenuScript : MonoBehaviour
         // Update SFX setting and update button.
         soundsEnabled = !soundsEnabled;
         textSounds.text = "Sound: " + (soundsEnabled ? "On" : "Off");
-        BetterPrefs.SetBool(BetterPrefs.KEY_SOUNDS_ENABLED, soundsEnabled);
+        BetterPrefs.SetBool(Globals.KEY_SOUNDS_ENABLED, soundsEnabled);
     }
 
     public void ToggleTips()
@@ -40,7 +40,7 @@ public class MainMenuScript : MonoBehaviour
         // Update hints button and update button.
         tipsEnabled = !tipsEnabled;
         textTips.text = "Tips: " + (tipsEnabled ? "On" : "Off");
-        BetterPrefs.SetBool(BetterPrefs.KEY_TIPS_ENABLED, tipsEnabled);
+        BetterPrefs.SetBool(Globals.KEY_TIPS_ENABLED, tipsEnabled);
     }
 
     public void Play()

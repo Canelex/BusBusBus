@@ -7,8 +7,13 @@ using UnityEngine.SceneManagement;
 public class LevelSelectScript : MonoBehaviour
 {
     public RectTransform content;
-    public LevelSelectButton levelButtonPrefab;
-    public UnlockLevelsButton unlockButtonPrefab;
+    public ButtonLevelSelect levelButtonPrefab;
+    public ButtonLevelUnlock unlockButtonPrefab;
+
+    void Start()
+    {
+        UpdateContent();
+    }
 
     public void UpdateContent()
     {
@@ -18,29 +23,37 @@ public class LevelSelectScript : MonoBehaviour
         }
 
         // How many levels are unlocked? (5 by default)
-        int numLevels = BetterPrefs.GetInt(BetterPrefs.KEY_LEVELS_UNLOCKED, 5);
+        int levelsUnlocked = BetterPrefs.GetInt(Globals.KEY_LEVELS_UNLOCKED, Globals.DEFAULT_LEVELS_UNLOCKED);
+        int totalLevels = SceneManager.sceneCountInBuildSettings - 2;
 
-        // Resize the content box
-        content.sizeDelta = new Vector2(content.sizeDelta.x, 264 + numLevels * 160);
-
-        bool levelCompleted = true; // First level will be unlocked.
-        for (int i = 0; i < numLevels; i++)
+        bool previousCompleted = true;
+        for (int level = 0; level < levelsUnlocked; level++)
         {
-            int levelIndex = i + 2;
-            bool levelUnlocked = levelCompleted; // Previous level completed?
-            levelCompleted = BetterPrefs.GetBool(BetterPrefs.PREFIX_LEVEL_COMPLETED + levelIndex, false);
-            LevelSelectButton lsb = Instantiate(levelButtonPrefab, content.transform);
-            lsb.init(levelIndex, levelUnlocked, levelCompleted);
-            lsb.transform.localPosition = Vector2.down * (i * 160 + 132);
+            if (level >= totalLevels)
+            {
+                previousCompleted = false;
+                break;
+            }
+
+            bool levelUnlocked = previousCompleted;
+            bool levelCompleted = BetterPrefs.GetBool(Globals.PREFIX_LEVEL_COMPLETED + (level + 2), false);
+           
+            ButtonLevelSelect levelSelect = Instantiate(levelButtonPrefab, content.transform);
+            levelSelect.init(level + 2, levelUnlocked, levelCompleted);
+            levelSelect.transform.localPosition = Vector2.down * (132 + 160 * level);
+
+            previousCompleted = levelCompleted;
         }
 
-        UnlockLevelsButton ulb = Instantiate(unlockButtonPrefab, content.transform);
-        ulb.transform.localPosition = Vector2.down * (numLevels * 160 + 132);
+        if (previousCompleted) // Show unlock button when level reached.
+        {
+            ButtonLevelUnlock levelUnlock = Instantiate(unlockButtonPrefab, content.transform);
+            levelUnlock.transform.localPosition = Vector2.down * (levelsUnlocked * 160 + 132);
+            content.sizeDelta = new Vector2(content.sizeDelta.x, 264 + levelsUnlocked * 160);
+        }
+        else
+        {
+            content.sizeDelta = new Vector2(content.sizeDelta.x, 264 + (levelsUnlocked - 1) * 160);
+        }
     }
-
-    void Start()
-    {
-        UpdateContent();
-    }
-
 }

@@ -7,8 +7,9 @@ using UnityEngine.SceneManagement;
 public class LevelController : MonoBehaviour
 {
     private Camera cam;
-    private LineController line;
     private BusController bus;
+    private LineController line;
+    private CanvasController canvas;
     public bool gameOver;
     public float sectorTime;
     private float sectorProgress;
@@ -19,22 +20,26 @@ public class LevelController : MonoBehaviour
     private float cameraProgress;
     private Vector3 cameraFinish;
     private Vector3 cameraStart;
-    public Animator explosion;
-    public GameObject gameOverCanvas;
-    public GameObject nextLevelButton;
-    public GameObject unlockLevelsButton;
-    public GameObject replayButton;
-    public GameObject levelSelectButton;
-    public GameObject tipPanel;
-    private bool tipsEnabled;
+    public Animator explosionPrefab;
+    private bool showTips;
     
     void Start()
     {
-        cam = Camera.main;
-        line = FindObjectOfType<LineController>();
+        // Find the main parts of the level.
         bus = FindObjectOfType<BusController>();
+        line = FindObjectOfType<LineController>();
+        canvas = FindObjectOfType<CanvasController>();
+        cam = Camera.main;
+
+        // Setup the level.
+        gameOver = false;
+        cameraMoving = false;
         currentSector = 1;
-        tipsEnabled = BetterPrefs.GetBool(BetterPrefs.KEY_TIPS_ENABLED, true); // Prefs
+        sectorProgress = 0;
+        cameraProgress = 0;
+
+        // Check if tips are enabled.
+        showTips = BetterPrefs.GetBool(Globals.KEY_TIPS_ENABLED, Globals.DEFAULT_TIPS_ENABLED);
     }
 
     void Update()
@@ -55,7 +60,7 @@ public class LevelController : MonoBehaviour
                 cam.transform.position = Vector3.Lerp(cameraStart, cameraFinish, cameraProgress);
                 line.UpdateLine(); // Update line after camera
             }
-            else
+            else // Sector is being played / Bus is moving
             {
                 sectorProgress += Time.deltaTime / sectorTime;
 
@@ -71,32 +76,28 @@ public class LevelController : MonoBehaviour
                         cameraStart = cam.transform.position;
                         cameraFinish = cameraStart + Vector3.up * cam.orthographicSize * 2;
                     }
-                    else // Level cleared
+                    else
                     {
+                        // Level cleared! Play victory bell
                         gameOver = true;
-
-                        // Level is completed!
-                        int levelIndex = SceneManager.GetActiveScene().buildIndex;
-                        BetterPrefs.SetBool(BetterPrefs.PREFIX_LEVEL_COMPLETED + levelIndex, true);
-
-                        // Play victory sound
                         AudioManager.Instance.Play("Bell"); 
 
-                        // Show UI overlay in a moment
-                        levelSelectButton.SetActive(true);
-
-                        // Is there a next level unlocked?
-                        if (levelIndex - 1 < BetterPrefs.GetInt(BetterPrefs.KEY_LEVELS_UNLOCKED, 5))
+                        // Save this victory in prefs
+                        int levelIndex = SceneManager.GetActiveScene().buildIndex;
+                        BetterPrefs.SetBool(Globals.PREFIX_LEVEL_COMPLETED + levelIndex, true);
+                        
+                        int totalLevels = SceneManager.sceneCountInBuildSettings;
+                        if (levelIndex + 1 < totalLevels) // There are more scenes.
                         {
-                            nextLevelButton.SetActive(true);
+                            // Show UI.
+                            int levelsUnlocked = BetterPrefs.GetInt(Globals.KEY_LEVELS_UNLOCKED, Globals.DEFAULT_LEVELS_UNLOCKED);
+                            bool nextLevelUnlocked = (levelIndex - 1) < levelsUnlocked;
+                            canvas.ShowVictoryUI(nextLevelUnlocked); 
                         }
                         else
                         {
-                            unlockLevelsButton.SetActive(true);
+                            canvas.ShowGameCompleteUI();
                         }
-
-                        Invoke("ShowGameOverCanvas", 0.75F);
-                        
                     }
                 }
 
@@ -109,27 +110,14 @@ public class LevelController : MonoBehaviour
     public void BusCrashedAt(Vector2 position)
     {
         // Play explosion effect
-        Animator expl = Instantiate(explosion);
-        expl.transform.position = position;
-        Destroy(expl.gameObject, expl.GetCurrentAnimatorStateInfo(0).length);
+        Animator explosion = Instantiate(explosionPrefab);
+        explosion.transform.position = position;
+        Destroy(explosion.gameObject, explosion.GetCurrentAnimatorStateInfo(0).length);
 
-        // Game Overr. Enable the correct buttons and show canvas in a second
+        // Game over
         gameOver = true;
-        replayButton.SetActive(true);
-        levelSelectButton.SetActive(true);
 
-        // Maybe show the hints panel
-        if (tipPanel && tipsEnabled)
-        {
-            tipPanel.SetActive(true);
-        }
-
-        Invoke("ShowGameOverCanvas", 0.75F);
-    }
-
-    private void ShowGameOverCanvas()
-    {
-        AudioManager.Instance.Play("Pop"); // Pop sound (oneshot)
-        gameOverCanvas.SetActive(true);
+        // Show UI
+        canvas.ShowDefeatUI();
     }
 }

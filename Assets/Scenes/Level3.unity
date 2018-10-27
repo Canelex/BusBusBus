@@ -762,27 +762,7 @@ Prefab:
     - target: {fileID: 114834673658492972, guid: e8c64a50c6703f44a9e7111a8c9213b9,
         type: 2}
       propertyPath: m_Text
-      value: 'Tip: Adjust the path at different heights'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1906658941214974, guid: e8c64a50c6703f44a9e7111a8c9213b9, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1682954365136910, guid: e8c64a50c6703f44a9e7111a8c9213b9, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1472839315883692, guid: e8c64a50c6703f44a9e7111a8c9213b9, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1167650964278040, guid: e8c64a50c6703f44a9e7111a8c9213b9, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1191139465686468, guid: e8c64a50c6703f44a9e7111a8c9213b9, type: 2}
-      propertyPath: m_IsActive
-      value: 0
+      value: 'Tip: Adjust the path at different heights.'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8c64a50c6703f44a9e7111a8c9213b9, type: 2}

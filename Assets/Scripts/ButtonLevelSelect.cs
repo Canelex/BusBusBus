@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class LevelSelectButton : MonoBehaviour
+public class ButtonLevelSelect : MonoBehaviour
 {
     private int levelIndex;
     private bool levelUnlocked;
@@ -37,17 +37,15 @@ public class LevelSelectButton : MonoBehaviour
         }
     }
 
-    public void LoadLevel()
+    public void TryLoadLevel()
     {
         if (levelUnlocked)
         {
-            SceneManager.LoadScene(levelIndex);
+           SceneManager.LoadScene(levelIndex);
         }
         else
         {
-            // Play some kind of sound?
+            // Some kind of 'nope' noise.
         }
     }
-
-
 }

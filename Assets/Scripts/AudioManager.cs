@@ -24,7 +24,8 @@ public class AudioManager : MonoBehaviour
 
         source = GetComponent<AudioSource>();
 
-        soundsEnabled = BetterPrefs.GetBool(BetterPrefs.KEY_SOUNDS_ENABLED, true);
+        // Check if sounds are enabled
+        soundsEnabled = BetterPrefs.GetBool(Globals.KEY_SOUNDS_ENABLED, Globals.DEFAULT_SOUND_ENABLED);
     }
 
 	public void Play(string name)

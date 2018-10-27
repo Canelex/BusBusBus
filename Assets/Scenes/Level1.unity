@@ -348,36 +348,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8c64a50c6703f44a9e7111a8c9213b9, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &723398021 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1906658941214974, guid: e8c64a50c6703f44a9e7111a8c9213b9,
-    type: 2}
-  m_PrefabInternal: {fileID: 723398020}
---- !u!1 &723398022 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1472839315883692, guid: e8c64a50c6703f44a9e7111a8c9213b9,
-    type: 2}
-  m_PrefabInternal: {fileID: 723398020}
---- !u!1 &723398023 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1682954365136910, guid: e8c64a50c6703f44a9e7111a8c9213b9,
-    type: 2}
-  m_PrefabInternal: {fileID: 723398020}
---- !u!1 &723398024 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1191139465686468, guid: e8c64a50c6703f44a9e7111a8c9213b9,
-    type: 2}
-  m_PrefabInternal: {fileID: 723398020}
---- !u!1 &723398025 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1167650964278040, guid: e8c64a50c6703f44a9e7111a8c9213b9,
-    type: 2}
-  m_PrefabInternal: {fileID: 723398020}
---- !u!1 &723398026 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1250656382741822, guid: e8c64a50c6703f44a9e7111a8c9213b9,
-    type: 2}
-  m_PrefabInternal: {fileID: 723398020}
 --- !u!1001 &727193384
 Prefab:
   m_ObjectHideFlags: 0
@@ -627,36 +597,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 114353845185674838, guid: 0e83840ac5b8ccc4499f124de5f4b596,
-        type: 2}
-      propertyPath: gameOverCanvas
-      value: 
-      objectReference: {fileID: 723398025}
-    - target: {fileID: 114353845185674838, guid: 0e83840ac5b8ccc4499f124de5f4b596,
-        type: 2}
-      propertyPath: nextLevelButton
-      value: 
-      objectReference: {fileID: 723398024}
-    - target: {fileID: 114353845185674838, guid: 0e83840ac5b8ccc4499f124de5f4b596,
-        type: 2}
-      propertyPath: replayButton
-      value: 
-      objectReference: {fileID: 723398023}
-    - target: {fileID: 114353845185674838, guid: 0e83840ac5b8ccc4499f124de5f4b596,
-        type: 2}
-      propertyPath: levelSelectButton
-      value: 
-      objectReference: {fileID: 723398022}
-    - target: {fileID: 114353845185674838, guid: 0e83840ac5b8ccc4499f124de5f4b596,
-        type: 2}
-      propertyPath: tipPanel
-      value: 
-      objectReference: {fileID: 723398021}
-    - target: {fileID: 114353845185674838, guid: 0e83840ac5b8ccc4499f124de5f4b596,
-        type: 2}
-      propertyPath: unlockLevelsButton
-      value: 
-      objectReference: {fileID: 723398026}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e83840ac5b8ccc4499f124de5f4b596, type: 2}
   m_IsPrefabAsset: 0

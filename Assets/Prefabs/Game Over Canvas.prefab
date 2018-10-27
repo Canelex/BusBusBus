@@ -22,14 +22,14 @@ GameObject:
   - component: {fileID: 223291531539821996}
   - component: {fileID: 114465071351707914}
   - component: {fileID: 114692383582480364}
-  - component: {fileID: 114001325227008832}
+  - component: {fileID: 114527503201751586}
   m_Layer: 5
   m_Name: Game Over Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1191139465686468
 GameObject:
   m_ObjectHideFlags: 0
@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 222042528561082678}
   - component: {fileID: 114005593610195616}
   - component: {fileID: 114755857488042438}
+  - component: {fileID: 114908061712657448}
   m_Layer: 5
   m_Name: Next Level Button
   m_TagString: Untagged
@@ -78,7 +79,7 @@ GameObject:
   - component: {fileID: 114738054195077528}
   - component: {fileID: 114972998941557690}
   m_Layer: 5
-  m_Name: Unlock More Levels
+  m_Name: Unlock Levels Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,6 +130,7 @@ GameObject:
   - component: {fileID: 222704045932867360}
   - component: {fileID: 114397080853225470}
   - component: {fileID: 114088479785232688}
+  - component: {fileID: 114532111814282104}
   m_Layer: 5
   m_Name: Level Select Button
   m_TagString: Untagged
@@ -164,6 +166,7 @@ GameObject:
   - component: {fileID: 222838603408515172}
   - component: {fileID: 114267654177866696}
   - component: {fileID: 114307621324464756}
+  - component: {fileID: 114548921007198790}
   m_Layer: 5
   m_Name: Replay Button
   m_TagString: Untagged
@@ -205,17 +208,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114001325227008832
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1167650964278040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8174ac75043e9aa4fa8520087e49c11e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114005593610195616
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -283,8 +275,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114001325227008832}
-        m_MethodName: LoadScene
+      - m_Target: {fileID: 114532111814282104}
+        m_MethodName: LoadLevel
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -456,9 +448,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114001325227008832}
-        m_MethodName: LoadSceneIn
-        m_Mode: 3
+      - m_Target: {fileID: 114548921007198790}
+        m_MethodName: ReloadLevel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -501,7 +493,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Unlock More Levels
+  m_Text: Unlock 5 Levels (Ad)
 --- !u!114 &114397080853225470
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -550,6 +542,33 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114527503201751586
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1167650964278040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b026e3cf11af64fb5a138a2d96b4b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonNextLevel: {fileID: 1191139465686468}
+  buttonUnlockLevels: {fileID: 1250656382741822}
+  buttonReplay: {fileID: 1682954365136910}
+  buttonLevelSelect: {fileID: 1472839315883692}
+  panelTips: {fileID: 1906658941214974}
+--- !u!114 &114532111814282104
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1472839315883692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 689d9606ab429654cb52ffec2a6c2c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114545869239708866
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -577,6 +596,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114548921007198790
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1682954365136910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 689d9606ab429654cb52ffec2a6c2c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114573360053802500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -718,8 +748,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114001325227008832}
-        m_MethodName: LoadSceneIn
+      - m_Target: {fileID: 114908061712657448}
+        m_MethodName: LoadLevelIn
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -764,6 +794,17 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1.5
   m_Text: 'Tip: Adjust the path with your finger.'
+--- !u!114 &114908061712657448
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1191139465686468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 689d9606ab429654cb52ffec2a6c2c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114972998941557690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -775,6 +816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17b1a4057709d6548bbed49a1f103f8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levels: 1
 --- !u!222 &222042528561082678
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -851,7 +893,7 @@ Canvas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1167650964278040}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -876,10 +918,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 224215800018304730}
+  - {fileID: 224183006899797074}
   - {fileID: 224698146987904934}
   - {fileID: 224318786859803608}
   - {fileID: 224446850149358476}
-  - {fileID: 224183006899797074}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -900,7 +942,7 @@ RectTransform:
   m_Children:
   - {fileID: 224205336795089546}
   m_Father: {fileID: 224012969033117794}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -956,7 +998,7 @@ RectTransform:
   m_Children:
   - {fileID: 224637378602004984}
   m_Father: {fileID: 224012969033117794}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -993,7 +1035,7 @@ RectTransform:
   m_Children:
   - {fileID: 224373299279931480}
   m_Father: {fileID: 224012969033117794}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -1030,7 +1072,7 @@ RectTransform:
   m_Children:
   - {fileID: 224903675985224994}
   m_Father: {fileID: 224012969033117794}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

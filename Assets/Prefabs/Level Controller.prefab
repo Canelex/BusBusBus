@@ -55,9 +55,5 @@ MonoBehaviour:
   sectorTime: 2
   numSectors: 3
   cameraTime: 0.5
-  explosion: {fileID: 95471079499971548, guid: 59c22d13fc6b1e940b19d548dc8b648c, type: 2}
-  gameOverCanvas: {fileID: 0}
-  nextLevelButton: {fileID: 0}
-  replayButton: {fileID: 0}
-  levelSelectButton: {fileID: 0}
-  tipPanel: {fileID: 0}
+  explosionPrefab: {fileID: 95471079499971548, guid: 59c22d13fc6b1e940b19d548dc8b648c,
+    type: 2}

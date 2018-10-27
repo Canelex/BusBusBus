@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 348161328}
   - component: {fileID: 348161327}
   m_Layer: 5
-  m_Name: Unlock More Levels
+  m_Name: Unlock Levels Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -310,7 +310,7 @@ RectTransform:
   m_Children:
   - {fileID: 456588025}
   m_Father: {fileID: 1020187012}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -329,6 +329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17b1a4057709d6548bbed49a1f103f8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levels: 0
 --- !u!114 &348161328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -488,7 +489,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Unlock More Levels
+  m_Text: Unlock 5 Levels (Ad)
 --- !u!222 &456588027
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -764,6 +765,7 @@ GameObject:
   - component: {fileID: 1020187010}
   - component: {fileID: 1020187009}
   - component: {fileID: 1020187007}
+  - component: {fileID: 1020187008}
   m_Layer: 5
   m_Name: Level Select Button
   m_TagString: Untagged
@@ -783,6 +785,7 @@ GameObject:
   - component: {fileID: 1020187017}
   - component: {fileID: 1020187016}
   - component: {fileID: 1020187015}
+  - component: {fileID: 1020187024}
   m_Layer: 5
   m_Name: Replay Button
   m_TagString: Untagged
@@ -802,6 +805,7 @@ GameObject:
   - component: {fileID: 1020187020}
   - component: {fileID: 1020187019}
   - component: {fileID: 1020187018}
+  - component: {fileID: 1020187025}
   m_Layer: 5
   m_Name: Next Level Button
   m_TagString: Untagged
@@ -821,14 +825,14 @@ GameObject:
   - component: {fileID: 1020187023}
   - component: {fileID: 1020187022}
   - component: {fileID: 1020187021}
-  - component: {fileID: 1020187008}
+  - component: {fileID: 1020187026}
   m_Layer: 5
   m_Name: Game Over Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1020187007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -871,7 +875,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1020187008}
-        m_MethodName: LoadScene
+        m_MethodName: LoadLevel
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -886,13 +890,13 @@ MonoBehaviour:
 --- !u!114 &1020187008
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114001325227008832, guid: e8c64a50c6703f44a9e7111a8c9213b9,
+  m_CorrespondingSourceObject: {fileID: 114532111814282104, guid: e8c64a50c6703f44a9e7111a8c9213b9,
     type: 2}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1020187006}
+  m_GameObject: {fileID: 1020187003}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8174ac75043e9aa4fa8520087e49c11e, type: 3}
+  m_Script: {fileID: 11500000, guid: 689d9606ab429654cb52ffec2a6c2c86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1020187009
@@ -944,7 +948,7 @@ RectTransform:
   m_Children:
   - {fileID: 948783615}
   m_Father: {fileID: 1020187012}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -963,9 +967,9 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1020187014}
+  - {fileID: 348161326}
   - {fileID: 1020187013}
   - {fileID: 1020187011}
-  - {fileID: 348161326}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -987,7 +991,7 @@ RectTransform:
   m_Children:
   - {fileID: 2146066952}
   m_Father: {fileID: 1020187012}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1055,9 +1059,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1020187008}
-        m_MethodName: LoadSceneIn
-        m_Mode: 3
+      - m_Target: {fileID: 1020187024}
+        m_MethodName: ReloadLevel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1145,8 +1149,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1020187008}
-        m_MethodName: LoadSceneIn
+      - m_Target: {fileID: 1020187025}
+        m_MethodName: LoadLevelIn
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1240,7 +1244,7 @@ Canvas:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1020187006}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -1254,6 +1258,47 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1020187024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114548921007198790, guid: e8c64a50c6703f44a9e7111a8c9213b9,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1020187004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 689d9606ab429654cb52ffec2a6c2c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1020187025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114908061712657448, guid: e8c64a50c6703f44a9e7111a8c9213b9,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1020187005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 689d9606ab429654cb52ffec2a6c2c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1020187026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114527503201751586, guid: e8c64a50c6703f44a9e7111a8c9213b9,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1020187006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b026e3cf11af64fb5a138a2d96b4b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonNextLevel: {fileID: 1020187005}
+  buttonUnlockLevels: {fileID: 348161325}
+  buttonReplay: {fileID: 1020187004}
+  buttonLevelSelect: {fileID: 1020187003}
+  panelTips: {fileID: 0}
 --- !u!1001 &1033247039
 Prefab:
   m_ObjectHideFlags: 0
