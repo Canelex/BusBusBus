@@ -25,16 +25,11 @@ public class LevelSelectScript : MonoBehaviour
         // How many levels are unlocked? (5 by default)
         int levelsUnlocked = BetterPrefs.GetInt(Globals.KEY_LEVELS_UNLOCKED, Globals.DEFAULT_LEVELS_UNLOCKED);
         int totalLevels = SceneManager.sceneCountInBuildSettings - 2;
+        levelsUnlocked = Mathf.Min(levelsUnlocked, totalLevels); // Cap it
 
         bool previousCompleted = true;
         for (int level = 0; level < levelsUnlocked; level++)
         {
-            if (level >= totalLevels)
-            {
-                previousCompleted = false;
-                break;
-            }
-
             bool levelUnlocked = previousCompleted;
             bool levelCompleted = BetterPrefs.GetBool(Globals.PREFIX_LEVEL_COMPLETED + (level + 2), false);
            
@@ -45,7 +40,7 @@ public class LevelSelectScript : MonoBehaviour
             previousCompleted = levelCompleted;
         }
 
-        if (previousCompleted) // Show unlock button when level reached.
+        if (previousCompleted && levelsUnlocked != totalLevels) // Show unlock button when level reached.
         {
             ButtonLevelUnlock levelUnlock = Instantiate(unlockButtonPrefab, content.transform);
             levelUnlock.transform.localPosition = Vector2.down * (levelsUnlocked * 160 + 132);

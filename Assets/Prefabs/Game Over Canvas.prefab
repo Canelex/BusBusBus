@@ -493,7 +493,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Unlock 5 Levels (Ad)
+  m_Text: Unlock 3 Levels (Ad)
 --- !u!114 &114397080853225470
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -816,7 +816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17b1a4057709d6548bbed49a1f103f8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levels: 1
+  levels: 3
 --- !u!222 &222042528561082678
 CanvasRenderer:
   m_ObjectHideFlags: 1
