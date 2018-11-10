@@ -6,116 +6,165 @@ using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
 {
-    private Camera cam;
+    // Related Components
     private BusController bus;
     private LineController line;
     private CanvasController canvas;
-    public bool gameOver;
+    // Level Settings
     public float sectorTime;
-    private float sectorProgress;
-    public int numSectors;
-    private int currentSector;
-    private bool cameraMoving;
     public float cameraTime;
-    private float cameraProgress;
-    private Vector3 cameraFinish;
+    public int numSectors;
+    // Level Data
+    private bool gameOver;
+    private bool levelStarted;
+    private int currentSector;
+    private bool sectorInProgress;
+    private float progress; // [0, 1]
+    // Other stuff
     private Vector3 cameraStart;
+    private Vector3 cameraStop;
     public Animator explosionPrefab;
     private bool showTips;
-    
+
+
     void Start()
     {
         // Find the main parts of the level.
         bus = FindObjectOfType<BusController>();
         line = FindObjectOfType<LineController>();
         canvas = FindObjectOfType<CanvasController>();
-        cam = Camera.main;
-
-        // Setup the level.
-        gameOver = false;
-        cameraMoving = false;
-        currentSector = 1;
-        sectorProgress = 0;
-        cameraProgress = 0;
 
         // Check if tips are enabled.
         showTips = BetterPrefs.GetBool(Globals.KEY_TIPS_ENABLED, Globals.DEFAULT_TIPS_ENABLED);
+        if (!showTips)
+        {
+            DestroyAllHints();
+        }
     }
 
     void Update()
     {
-        if (!gameOver)
+        if (!levelStarted)
         {
-            if (cameraMoving) // Camera is moving to next sector
+            // When player taps screen, start the level.
+            if (Input.touchCount > 0)
             {
-                cameraProgress += Time.deltaTime / cameraTime; // [0-1]
-
-                if (cameraProgress > 1)
+                foreach (Touch touch in Input.touches)
                 {
-                    cameraProgress = 1;
-                    cameraMoving = false;
-                    sectorProgress = 0;
+                    if (touch.phase == TouchPhase.Began)
+                    {
+                        StartLevel();
+                    }
                 }
-
-                cam.transform.position = Vector3.Lerp(cameraStart, cameraFinish, cameraProgress);
-                line.UpdateLine(); // Update line after camera
             }
-            else // Sector is being played / Bus is moving
+        }
+
+        if (IsLevelPlaying())
+        {
+            if (sectorInProgress)
             {
-                sectorProgress += Time.deltaTime / sectorTime;
-
-                if (sectorProgress > 1)
-                {
-                    sectorProgress = 1;
-
-                    if (currentSector < numSectors) // More sectors to go
-                    {
-                        currentSector++;
-                        cameraMoving = true;
-                        cameraProgress = 0;
-                        cameraStart = cam.transform.position;
-                        cameraFinish = cameraStart + Vector3.up * cam.orthographicSize * 2;
-                    }
-                    else
-                    {
-                        // Level cleared! Play victory bell
-                        gameOver = true;
-                        AudioManager.Instance.Play("Bell"); 
-
-                        // Save this victory in prefs
-                        int levelIndex = SceneManager.GetActiveScene().buildIndex;
-                        BetterPrefs.SetBool(Globals.PREFIX_LEVEL_COMPLETED + levelIndex, true);
-                        
-                        int totalLevels = SceneManager.sceneCountInBuildSettings;
-                        if (levelIndex + 1 < totalLevels) // There are more scenes.
-                        {
-                            // Show UI.
-                            int levelsUnlocked = BetterPrefs.GetInt(Globals.KEY_LEVELS_UNLOCKED, Globals.DEFAULT_LEVELS_UNLOCKED);
-                            bool nextLevelUnlocked = (levelIndex - 1) < levelsUnlocked;
-                            canvas.ShowVictoryUI(nextLevelUnlocked); 
-                        }
-                        else
-                        {
-                            canvas.ShowGameCompleteUI();
-                        }
-                    }
-                }
-
-                line.UpdateLine(); // Update line before bus
-                bus.UpdatePosition(sectorProgress);
+                UpdateSector();
+            }
+            else
+            {
+                UpdateCamera();
             }
         }
     }
 
+    private void UpdateCamera()
+    {
+        progress += Time.deltaTime / cameraTime; // Update progress [0, 1]
+        Camera.main.transform.position = Vector3.Lerp(cameraStart, cameraStop, Mathf.Min(1, progress));
+        line.UpdateLine(); // Update line after camera
+
+        if (progress > 1)
+        {
+            progress = 0;
+            sectorInProgress = true;
+        }
+    }
+
+    private void UpdateSector()
+    {
+        progress += Time.deltaTime / sectorTime; // Update progress [0, 1]
+        line.UpdateLine(); // Update line before bus
+        bus.UpdatePosition(Mathf.Min(1, progress));
+
+        if (progress > 1)
+        {
+            progress = 0;
+
+            if (currentSector < numSectors) // More sectors to go
+            {
+                currentSector++;
+                sectorInProgress = false;
+                cameraStart = Camera.main.transform.position;
+                cameraStop = cameraStart + Vector3.up * Camera.main.orthographicSize * 2;
+            }
+            else
+            {
+                LevelCompleted();
+            }
+        }
+    }
+
+    private void LevelCompleted()
+    {
+        // Level cleared! Play victory bell
+        gameOver = true;
+        AudioManager.Instance.Play("Bell");
+
+        // Save this victory in prefs
+        int levelIndex = SceneManager.GetActiveScene().buildIndex;
+        BetterPrefs.SetBool(Globals.PREFIX_LEVEL_COMPLETED + levelIndex, true);
+
+        int totalLevels = SceneManager.sceneCountInBuildSettings;
+        if (levelIndex + 1 < totalLevels) // There are more scenes.
+        {
+            // Show UI.
+            int levelsUnlocked = BetterPrefs.GetInt(Globals.KEY_LEVELS_UNLOCKED, Globals.DEFAULT_LEVELS_UNLOCKED);
+            bool nextLevelUnlocked = (levelIndex - 1) < levelsUnlocked;
+            canvas.ShowVictoryUI(nextLevelUnlocked);
+        }
+        else
+        {
+            canvas.ShowGameCompleteUI();
+        }
+    }
+
+    private void StartLevel()
+    {
+        levelStarted = true;
+        sectorInProgress = true;
+        currentSector = 1;
+        DestroyAllHints();
+        AudioManager.Instance.Play("Bus");
+    }
+
+    private void DestroyAllHints()
+    {
+        foreach(GameObject go in GameObject.FindGameObjectsWithTag("Hint"))
+        {
+            Destroy(go);
+        }
+    }
+
+    public bool IsLevelPlaying()
+    {
+        return levelStarted && !gameOver;
+    }
+
     public void BusCrashedAt(Vector2 position)
     {
+        // Defeat! Play crash sound.
+        gameOver = true;
+        AudioManager.Instance.Play("Crash");
+
         // Play explosion effect
         Animator explosion = Instantiate(explosionPrefab);
         explosion.transform.position = position;
         Destroy(explosion.gameObject, explosion.GetCurrentAnimatorStateInfo(0).length);
-
-        // Game over
-        gameOver = true;
 
         // Show UI
         canvas.ShowDefeatUI();

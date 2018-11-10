@@ -484,7 +484,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 849821177}
-        m_MethodName: LoadScene
+        m_MethodName: LoadLevel
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -540,7 +540,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 849821172}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8174ac75043e9aa4fa8520087e49c11e, type: 3}
+  m_Script: {fileID: 11500000, guid: 689d9606ab429654cb52ffec2a6c2c86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &854218464

@@ -9,12 +9,9 @@ public class CanvasController : MonoBehaviour
     public GameObject buttonUnlockLevels;
     public GameObject buttonReplay;
     public GameObject buttonLevelSelect;
-    public GameObject panelTips;
-    private bool showTips;
 
     void Start()
     {
-        showTips = BetterPrefs.GetBool(Globals.KEY_TIPS_ENABLED, Globals.DEFAULT_TIPS_ENABLED);
         canvas = GetComponent<Canvas>();
         canvas.enabled = false;
     }
@@ -27,11 +24,6 @@ public class CanvasController : MonoBehaviour
 
     public void ShowDefeatUI()
     {
-        if (panelTips != null && showTips) // Show the tip if there is one
-        {
-            panelTips.SetActive(true);
-        }
-
         buttonReplay.SetActive(true);
         buttonLevelSelect.SetActive(true);
 

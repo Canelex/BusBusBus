@@ -1,9 +1,7 @@
 fileFormatVersion: 2
-guid: 6fb8e69697f66e345844bdeb0d39a058
+guid: f1501851206ae5441ad1c90e177b0035
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: square_button_0
-    21300002: square_button_1
+  fileIDToRecycleName: {}
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -42,7 +40,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -106,51 +104,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: square_button_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 45
-        width: 44
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 48d866ce314a8e64e870d670302acd77
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: square_button_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 44
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 587ba7be9fe290b4db286afb37e03629
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 67b7c9da73c3fba41a7f7ae871e3bf91
+    spriteID: e07ae44960161e94587fbfd3cbaf49bc
     vertices: []
     indices: 
     edges: []

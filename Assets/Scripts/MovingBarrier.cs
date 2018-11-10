@@ -10,6 +10,7 @@ public class MovingBarrier : MonoBehaviour
     public bool toRight;
     private Vector3 a;
     private Vector3 b;
+    private float time;
     private float percent;
     private LevelController levelController;
 
@@ -23,26 +24,33 @@ public class MovingBarrier : MonoBehaviour
 
     void Update()
     {
-        if (Time.timeSinceLevelLoad < delay || levelController.gameOver)
+        if (!levelController.IsLevelPlaying())
         {
             return;
         }
 
-        percent += Time.deltaTime / period;
-
-        if (toRight)
+        if (time >= delay)
         {
-            transform.position = Vector2.Lerp(a, b, Mathf.Min(percent, 1));
+            percent += Time.deltaTime / period;
+
+            if (toRight)
+            {
+                transform.position = Vector2.Lerp(a, b, Mathf.Min(percent, 1));
+            }
+            else
+            {
+                transform.position = Vector2.Lerp(b, a, Mathf.Min(percent, 1));
+            }
+
+            if (percent >= 1)
+            {
+                percent = 0;
+                toRight = !toRight; // Swap the direction.
+            }
         }
         else
         {
-            transform.position = Vector2.Lerp(b, a, Mathf.Min(percent, 1));
-        }
-
-        if (percent >= 1)
-        {
-            percent = 0;
-            toRight = !toRight; // Swap the direction.
+            time += Time.deltaTime;
         }
     }
 }

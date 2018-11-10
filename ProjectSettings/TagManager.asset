@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bus
   - Obstacle
+  - Hint
   layers:
   - Default
   - TransparentFX

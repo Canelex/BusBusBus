@@ -11,8 +11,6 @@ public class BusController : MonoBehaviour
         // Find the line renderer attatched to controller.
         LineController lc = FindObjectOfType<LineController>();
         line = lc.GetComponent<LineRenderer>();
-
-        AudioManager.Instance.Play("Bus"); // Background sound (looping)
     }
 
     public void UpdatePosition(float percent)
@@ -50,17 +48,15 @@ public class BusController : MonoBehaviour
     {
         if (coll.gameObject.tag == "Obstacle")
         {
-            AudioManager.Instance.Play("Crash"); // Crash sound (oneshot)
-
             // Calculate point of explosion (average of all contact points).
-            Vector2 avg = Vector2.zero;
+            Vector2 contactPoint = Vector2.zero;
             foreach (ContactPoint2D cp in coll.contacts)
             {
-                avg += cp.point;
+                contactPoint += cp.point;
             }
-            avg /= coll.contacts.Length;
+            contactPoint /= coll.contacts.Length;
 
-            FindObjectOfType<LevelController>().BusCrashedAt(avg);
+            FindObjectOfType<LevelController>().BusCrashedAt(contactPoint);
         }
     }
 
