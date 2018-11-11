@@ -20,7 +20,7 @@ public class ButtonLevelSelect : MonoBehaviour
         levelCompleted = completed;
 
         // Update name and text component
-        levelText.text = gameObject.name = "Level " + (levelIndex - 1);
+        levelText.text = gameObject.name = "Level " + levelIndex;
 
         // Update level select button icon
         if (!levelUnlocked)
@@ -41,7 +41,7 @@ public class ButtonLevelSelect : MonoBehaviour
     {
         if (levelUnlocked)
         {
-           SceneManager.LoadScene(levelIndex);
+           SceneManager.LoadScene(Levels.GetBuildIndexFromLevel(levelIndex));
         }
         else
         {

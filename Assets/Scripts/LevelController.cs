@@ -116,18 +116,15 @@ public class LevelController : MonoBehaviour
         AudioManager.Instance.Play("Bell");
 
         // Save this victory in prefs
-        int levelIndex = SceneManager.GetActiveScene().buildIndex;
-        BetterPrefs.SetBool(Globals.PREFIX_LEVEL_COMPLETED + levelIndex, true);
+        int levelIndex = Levels.GetLevelFromBuildIndex(SceneManager.GetActiveScene().buildIndex);
+        Levels.SetLevelCompleted(levelIndex);
 
-        int totalLevels = SceneManager.sceneCountInBuildSettings;
-        if (levelIndex + 1 < totalLevels) // There are more scenes.
+        if (levelIndex < Levels.NUM_LEVELS) // There are more scenes.
         {
             // Show UI.
-            int levelsUnlocked = BetterPrefs.GetInt(Globals.KEY_LEVELS_UNLOCKED, Globals.DEFAULT_LEVELS_UNLOCKED);
-            bool nextLevelUnlocked = (levelIndex - 1) < levelsUnlocked;
-            canvas.ShowVictoryUI(nextLevelUnlocked);
+            canvas.ShowVictoryUI(Levels.IsLevelUnlocked(levelIndex + 1));
         }
-        else
+        else // Game Completed!
         {
             canvas.ShowGameCompleteUI();
         }

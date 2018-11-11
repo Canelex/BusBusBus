@@ -1,7 +1,7 @@
 static class Globals
 {
     // Default Pref Values
-    public static int DEFAULT_LEVELS_UNLOCKED = 3;
+    public static int DEFAULT_LEVELS_UNLOCKED = 6;
     public static bool DEFAULT_SOUND_ENABLED = true;
     public static bool DEFAULT_TIPS_ENABLED = true;
 

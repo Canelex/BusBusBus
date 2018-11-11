@@ -24,8 +24,7 @@ public class ButtonLevelUnlock : MonoBehaviour
             case ShowResult.Finished:
 
                 // Unlock some levels.
-                int levelsUnlocked = BetterPrefs.GetInt(Globals.KEY_LEVELS_UNLOCKED, Globals.DEFAULT_LEVELS_UNLOCKED);
-                BetterPrefs.SetInt(Globals.KEY_LEVELS_UNLOCKED, levelsUnlocked + levels);
+                Levels.UnlockLevels(levels);
 
                 // Update canvas if it exists
                 CanvasController canvas = FindObjectOfType<CanvasController>();
@@ -35,7 +34,7 @@ public class ButtonLevelUnlock : MonoBehaviour
                 }
 
                 // Update level select if it exists
-                LevelSelectScript lselect = FindObjectOfType<LevelSelectScript>();
+                LevelSelectHandler lselect = FindObjectOfType<LevelSelectHandler>();
                 if (lselect != null)
                 {
                     lselect.UpdateContent();

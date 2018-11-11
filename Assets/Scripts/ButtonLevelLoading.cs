@@ -5,9 +5,12 @@ public class ButtonLevelLoading : MonoBehaviour
 {
     public void LoadLevel(int buildIndex)
     {
-        // todo 1: check if the scene is unlocked
-        // todo 2: async and splash screen if slow
-        SceneManager.LoadScene(buildIndex);
+        // todo: async and splash screen if slow?
+        // Is the level unlocked?
+        if (Levels.IsLevelUnlocked(Levels.GetLevelFromBuildIndex(buildIndex)))
+        {
+            SceneManager.LoadScene(buildIndex);
+        }
     }
 
     public void LoadLevelIn(int levels)

@@ -6,7 +6,7 @@ public class BusController : MonoBehaviour
 {
     private LineRenderer line;
 
-    void Start()
+    public void Start()
     {
         // Find the line renderer attatched to controller.
         LineController lc = FindObjectOfType<LineController>();

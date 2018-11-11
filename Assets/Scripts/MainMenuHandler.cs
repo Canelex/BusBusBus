@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class MainMenuScript : MonoBehaviour
+public class MainMenuHandler : MonoBehaviour
 {
     public int targetFrameRate;
     public Text textSounds;
@@ -42,10 +42,4 @@ public class MainMenuScript : MonoBehaviour
         textTips.text = "Tips: " + (tipsEnabled ? "On" : "Off");
         BetterPrefs.SetBool(Globals.KEY_TIPS_ENABLED, tipsEnabled);
     }
-
-    public void Play()
-    {
-        SceneManager.LoadScene(1); // Load level select scene at build index 1.
-    }
-
 }
