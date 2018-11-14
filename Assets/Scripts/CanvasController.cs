@@ -9,6 +9,7 @@ public class CanvasController : MonoBehaviour
     public GameObject buttonUnlockLevels;
     public GameObject buttonReplay;
     public GameObject buttonLevelSelect;
+    public GameObject imageVictory;
 
     void Start()
     {
@@ -18,6 +19,7 @@ public class CanvasController : MonoBehaviour
 
     public void ShowGameCompleteUI()
     {
+        imageVictory.SetActive(true);
         buttonLevelSelect.SetActive(true);
         Invoke("ShowCanvas", 0.75F);
     }
