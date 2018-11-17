@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CanvasController : MonoBehaviour
 {
-    private Canvas canvas;
+    public GameObject panelGameOver;
     public GameObject buttonNextLevel;
     public GameObject buttonUnlockLevels;
     public GameObject buttonReplay;
@@ -13,8 +13,7 @@ public class CanvasController : MonoBehaviour
 
     void Start()
     {
-        canvas = GetComponent<Canvas>();
-        canvas.enabled = false;
+        panelGameOver.SetActive(false);
     }
 
     public void ShowGameCompleteUI()
@@ -59,6 +58,6 @@ public class CanvasController : MonoBehaviour
     void ShowCanvas()
     {
         AudioManager.Instance.Play("Pop"); // Play pop sound
-        canvas.enabled = true;
+        panelGameOver.SetActive(true);
     }
 }

@@ -156,7 +156,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: net.canelex.busbusbus
     Standalone: com.Company.ProductName
-    iOS: net.canelex.busbusbus
+    iOS: net.canelex.busbusbusgame
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
